@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { GalleryPage } from "./pages/gallery";
+import { UploadPage } from "./pages/upload";
 
 export class App extends React.Component {
 
@@ -12,7 +13,11 @@ export class App extends React.Component {
                         path="/" 
                         element={<GalleryPage />} 
                         />
-                </Routes>
+                    <Route 
+                        path="/upload" 
+                        element={<UploadPage />} 
+                        />
+               </Routes>
             </BrowserRouter>
         );
     }
