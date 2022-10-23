@@ -2,6 +2,10 @@ import React from "react";
 
 export class UploadPage extends React.Component {
 
+    onUploadFiles(files) {
+        console.log(files);
+    };
+
     render() {
         return (
             <div>
@@ -11,7 +15,7 @@ export class UploadPage extends React.Component {
                     multiple={true}
                     accept="image/*"
                     onChange={event => {
-                        console.log(event);
+                        this.onUploadFiles(event.target.files);
                     }}
                     />
             </div>
