@@ -1,9 +1,21 @@
 import React from "react";
+import axios from "axios";
+
+const BASE_URL = process.env.BASE_URL;
 
 export function UploadPage() {
 
-    function onUploadFiles(files) {
-        console.log(files);
+    async function onUploadFiles(files) {
+        for (const file of files) {
+            await axios.post(`${BASE_URL}/asset`, file, {
+                headers: {
+                    "file-name": file.name,
+                    "content-type": file.type,
+                    "width": 255,
+                    "height": 255,
+                },
+            });
+        }
     };
 
     return (
@@ -13,8 +25,8 @@ export function UploadPage() {
                 type="file"
                 multiple={true}
                 accept="image/*"
-                onChange={event => {
-                    onUploadFiles(event.target.files);
+                onChange={async event => {
+                    await onUploadFiles(event.target.files);
                 }}
                 />
         </div>
