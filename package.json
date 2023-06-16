@@ -1,7 +1,7 @@
 {
-  "name": "react-parcel-template",
+  "name": "photosphere-frontend",
   "version": "1.0.0",
-  "description": "A simple project template that is a starting point for frontend development with React.",
+  "description": "The frontend for the Photosphere application.",
   "source": "src/index.html",
   "scripts": {
     "start": "parcel",
