@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Gallery } from "./lib/gallery";
 
-const BASE_URL = `http://localhost:3000`;
+const BASE_URL = process.env.BASE_URL;
+if (!BASE_URL) {
+    throw new Error(`Set BASE_URL environment variable to the URL for the Photosphere backend.`);
+}
+
+console.log(`Expecting backend at ${BASE_URL}.`);
 
 export function App() {
 
