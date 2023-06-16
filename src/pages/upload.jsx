@@ -1,6 +1,11 @@
 import React from "react";
 
 export function UploadPage() {
+
+    function onUploadFiles(files) {
+        console.log(files);
+    };
+
     return (
         <div>
             <p>Click the button and choose files to upload</p>
@@ -9,7 +14,7 @@ export function UploadPage() {
                 multiple={true}
                 accept="image/*"
                 onChange={event => {
-                    console.log(event);
+                    onUploadFiles(event.target.files);
                 }}
                 />
         </div>
