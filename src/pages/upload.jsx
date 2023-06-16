@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { loadFile, getImageResolution } from "../lib/image";
 
 const BASE_URL = process.env.BASE_URL;
 
@@ -7,12 +8,14 @@ export function UploadPage() {
 
     async function onUploadFiles(files) {
         for (const file of files) {
+            const imageData = await loadFile(file);
+            const imageResolution = await getImageResolution(imageData);
             await axios.post(`${BASE_URL}/asset`, file, {
                 headers: {
                     "file-name": file.name,
                     "content-type": file.type,
-                    "width": 255,
-                    "height": 255,
+                    "width": imageResolution.width,
+                    "height": imageResolution.height,
                 },
             });
         }
